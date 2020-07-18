@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Rides | Ride Sharing
+{% endblock title %}
+
+{% block content %}
+
+<section class="page-section" id="services" >
+<!--    <div class="container">-->
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase" style="text-align: center;">Rides</h2>
+          <h3 class="section-subheading text-muted">Choose a ride for you</h3>
+        </div>
+      </div>
+
+<div style="padding-top:;">
+
+    {% comment %} {% if message %}
+
+        {% if danger %}
+          <div class="alert alert-danger alert-dismissible">
+		        <a href="/rides" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p style="text-align: center;">{{message}}</p>
+	        </div>
+        {% else %}
+          <div class="alert alert-primary alert-dismissible">
+		        <a href="/rides" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p style="text-align: center;">{{message}}</p>
+	        </div>
+        {% endif %}
+
+    {% endif %} {% endcomment %}
+
+
+    <table class="table">
+        <thead class="thead-dark" >
+            <tr>
+            <th scope="col">Facilitator</th>
+            <th scope="col">Start Place</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Ride Date</th>
+            <th scope="col">Price</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Arrival Time</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <form method="post" action="subscribe-ride">
+            {% for ride in rides %}
+                <tr>
+                    <th>{{ride.facilitator}}</th>
+                    <th>{{ride.start_place}}</th>
+                    <th>{{ride.destination}}</th>
+                    <th>{{ride.ride_date}}</th>
+                    <th>{{ride.price}}</th>
+                    <th>{{ride.departure_time}}</th>
+                    <th>{{ride.arrival_time}}</th>
+                    <th><button class="btn btn-primary">Subscribe</button></th>
+
+                </tr>
+            {% endfor %}
+         </form>
+        </tbody>
+    </table>
+</div>
+
+
+</section>
+{% endblock content %}
